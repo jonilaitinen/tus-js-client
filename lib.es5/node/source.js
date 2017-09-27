@@ -126,7 +126,9 @@ var StreamSource = function () {
   }, {
     key: "close",
     value: function close() {
-      //this._stream.
+      // added this to fix resume on node, otherwise gets stuck when using
+      // crypto stream as input, even though filestream works
+      this._stream.unpipe();
     }
   }]);
 
